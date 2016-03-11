@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Race for the Galaxy
+Categories=Game
+Exec=rftg
+Icon=rftg
+StartupNotify=true
+Type=Application
