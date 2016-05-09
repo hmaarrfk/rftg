@@ -1,6 +1,6 @@
 Name: rftg
 Version: 0.9.4
-Release: 6%{?dist}
+Release: 7%{?dist}
 Summary: Race for the Galaxy AI
 
 Group: Amusements/Games
@@ -64,13 +64,16 @@ fi
 %doc AUTHORS ChangeLog COPYING NEWS README
 %{_bindir}/*
 %{_datadir}/%{name}
-%{_datadir}/appdata/*
-%{_datadir}/applications/*
+%{_datadir}/appdata/%{name}.appdata.xml
+%{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/*
 
 
 
 %changelog
+* Mon May 09 2016 Mark Harfouche <mark.harfouche@gmail.com> - 0.9.4-7
+- For some reason, the appdata wasn't included before
+
 * Mon May 09 2016 Mark Harfouche <mark.harfouche@gmail.com> - 0.9.4-6
 - Added the correct license GPLv2+ to the spec file.
 
