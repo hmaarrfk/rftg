@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2013 First Lastname <your@email.com> -->
+<component type="desktop">
+    <id>rftg.desktop</id>
+    <metadata_license>BSD</metadata_license>
+    <project_license>GPL-2.0+</project_license>
+    <name>Race for the Galaxy</name>
+    <summary>Keldon AI for the popular board game Race for the Galaxy</summary>
+    <description>
+        <p>
+        This is a project to create artificial intelligence opponent(s) for the card game Race for the Galaxy. Currently, the base game and all three expansions are supported.
+        </p>
+        <p>
+        Online multiplayer is supported.
+        </p>
+    </description>
+    <screenshots>
+        <screenshot type="default" width="1218" height="832">http://www.keldon.net/rftg/screenshot.jpg</screenshot>
+    </screenshots>
+    <url type="homepage">http://www.keldon.net/rftg/</url>
+    <update_contact>mark.harfouche@gmail.com</update_contact>
+</component>
+

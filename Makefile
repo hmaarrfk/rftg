@@ -6,7 +6,7 @@ all:
 	cp *.tar.* ~/rpmbuild/SOURCES/
 	cp *.png   ~/rpmbuild/SOURCES/
 	cp *.desktop   ~/rpmbuild/SOURCES/
-	#cp *.patch ~/rpmbuild/SOURCES/
+	cp *.appdata.xml ~/rpmbuild/SOURCES/
 	rpmbuild -bs ~/rpmbuild/SPECS/rftg.spec
 
 

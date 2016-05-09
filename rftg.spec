@@ -1,17 +1,20 @@
 Name: rftg
 Version: 0.9.4
-Release: 2%{?dist}
+Release: 5%{?dist}
 Summary: Race for the Galaxy AI
 
-Group: Games
+Group: Amusements/Games
 License: GPL
 URL: http://www.keldon.net/rftg/
 
-Source0: http://www.keldon.net/rftg/rftg-%{version}.tar.bz2
-Source1: rftg.desktop
-Source2: rftg.png
+Source0: http://www.keldon.net/%{name}/%{name}-%{version}.tar.bz2
+Source1: %{name}.desktop
+Source2: %{name}.png
+Source3: %{name}.appdata.xml
+
 BuildRequires: gtk2-devel >= 2.24.29
 BuildRequires: desktop-file-utils
+BuildRequires: libappstream-glib
 
 %description
 This is a project to create artificial intelligence opponent(s) for the card game Race for the Galaxy. Currently, the base game and all three expansions are supported.
@@ -31,11 +34,17 @@ make %{?_smp_mflags}
 %install
 %make_install
 
-mkdir -p %{buildroot}%{_datadir}/icons/hicolor/256x256/apps/
-cp %{_sourcedir}/rftg.png %{buildroot}%{_datadir}/icons/hicolor/256x256/apps/
+install -m 644 -D %{_sourcedir}/%{name}.appdata.xml %{buildroot}%{_datadir}/appdata/%{name}.appdata.xml
 
-mkdir -p %{buildroot}%{_datadir}/applications
-desktop-file-install --delete-original --dir=${RPM_BUILD_ROOT}%{_datadir}/applications %{_sourcedir}/rftg.desktop
+install -m 644 -D %{_sourcedir}/%{name}.png %{buildroot}%{_datadir}/icons/hicolor/256x256/apps/%{name}.png
+
+install -m 755 -d %{buildroot}%{_datadir}/applications
+desktop-file-install -m 644 --delete-original --dir=${RPM_BUILD_ROOT}%{_datadir}/applications %{_sourcedir}/%{name}.desktop
+
+%check
+desktop-file-validate ${RPM_BUILD_ROOT}%{_datadir}/applications/%{name}.desktop
+appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/appdata/*.appdata.xml
+
 
 %post
 /usr/bin/update-desktop-database &> /dev/null || :
@@ -53,15 +62,24 @@ fi
 
 %files
 %doc AUTHORS ChangeLog COPYING NEWS README
-%{_bindir}/rftg
-%{_bindir}/do_train
-%{_datadir}/rftg
+%{_bindir}/*
+%{_datadir}/%{name}
+%{_datadir}/appdata/*
 %{_datadir}/applications/*
-%{_datadir}/icons/hicolor/256x256/apps/*
+%{_datadir}/icons/hicolor/*/apps/*
 
 
 
 %changelog
+* Mon May 09 2016 Mark Harfouche <mark.harfouche@gmail.com> - 0.9.4-5
+- rebuilt
+
+* Mon May 09 2016 Mark Harfouche <mark.harfouche@gmail.com> - 0.9.4-4
+- Added categories. More fixes to the appdata file
+
+* Sun May 08 2016 Mark Harfouche <mark.harfouche@gmail.com> - 0.9.4-3
+- Added appdata
+
 * Fri Mar 11 2016 Mark Harfouche <mark.harfouche@gmail.com> - 0.9.4-2
 - Now with a launcher
 
