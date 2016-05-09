@@ -1,10 +1,10 @@
 Name: rftg
 Version: 0.9.4
-Release: 5%{?dist}
+Release: 6%{?dist}
 Summary: Race for the Galaxy AI
 
 Group: Amusements/Games
-License: GPL
+License: GPLv2+
 URL: http://www.keldon.net/rftg/
 
 Source0: http://www.keldon.net/%{name}/%{name}-%{version}.tar.bz2
@@ -71,6 +71,9 @@ fi
 
 
 %changelog
+* Mon May 09 2016 Mark Harfouche <mark.harfouche@gmail.com> - 0.9.4-6
+- Added the correct license GPLv2+ to the spec file.
+
 * Mon May 09 2016 Mark Harfouche <mark.harfouche@gmail.com> - 0.9.4-5
 - rebuilt
 
