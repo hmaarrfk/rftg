@@ -1,13 +1,12 @@
+PACKAGE_NAME=rftg
 
 all:
 	rpmdev-setuptree
-	spectool -g *.spec
-	cp *.spec ~/rpmbuild/SPECS/
-	cp *.tar.* ~/rpmbuild/SOURCES/
-	cp *.png   ~/rpmbuild/SOURCES/
-	cp *.desktop   ~/rpmbuild/SOURCES/
-	cp *.appdata.xml ~/rpmbuild/SOURCES/
-	rpmbuild -bs ~/rpmbuild/SPECS/rftg.spec
+	spectool -g -R $(PACKAGE_NAME).spec
+	cp $(PACKAGE_NAME).png   ~/rpmbuild/SOURCES/
+	cp $(PACKAGE_NAME).desktop   ~/rpmbuild/SOURCES/
+	cp $(PACKAGE_NAME).appdata.xml ~/rpmbuild/SOURCES/
+	rpmbuild -bs $(PACKAGE_NAME).spec
 
 
 .PHONY: all
